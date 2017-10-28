@@ -43,5 +43,9 @@ module.exports = {
 			"error",
 			{ "allow": ["log", "info", "warn", "error"] }
 		],
+		"comma-dangle": [
+			"error",
+			"always-multiline",
+		]
 	}
 };
