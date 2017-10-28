@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import KeyHandler, { KEYPRESS } from "react-key-handler";
 
 import Cargo from "../cargo";
 import Screen from "../screen";
@@ -54,6 +55,9 @@ export default class App extends Component {
 
     return (
       <div className="app">
+        <KeyHandler keyEventName={KEYPRESS} keyValue="[" onKeyHandle={this.handleGoBack.bind(this)} />
+        <KeyHandler keyEventName={KEYPRESS} keyValue="]" onKeyHandle={this.handleGoForward.bind(this)} />
+
         <header className="app-header">
           <h1 className="app-title">{screen.title}</h1>
           <div className="app-nav-buttons">
