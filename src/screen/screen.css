@@ -1,0 +1,19 @@
+.screen {
+  flex: 1;
+
+  display: flex;
+  flex-direction: row;
+
+  font-size: large;
+  border: 1px solid green;
+}
+
+.screen-left {
+  flex: 1 1 auto;
+  border: 1px solid #222;
+}
+
+.screen-right {
+  flex: 1 1 auto;
+  border: 1px solid #222;
+}
