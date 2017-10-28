@@ -6,13 +6,28 @@
 }
 
 .app-header {
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+
   text-align: center;
   background-color: #222;
   color: lavender;
 }
 
 .app-title {
+  flex: 1;
   font-size: 1.5em;
+}
+
+.app-nav-buttons {
+  display: flex;
+}
+
+.app-nav-button {
+  margin: 0 4px;
+  cursor: pointer;
 }
 
 .app-screens {
