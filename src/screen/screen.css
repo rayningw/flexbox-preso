@@ -9,11 +9,11 @@
 }
 
 .screen-left {
-  flex: 1 1 auto;
+  flex-basis: 50%;
   border: 1px solid #222;
 }
 
 .screen-right {
-  flex: 1 1 auto;
+  flex-basis: 50%;
   border: 1px solid #222;
 }

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
+import Cargo from "../cargo";
 import Screen from "../screen";
+import Vessel from "../vessel";
 
 import "./app.css";
 
@@ -15,12 +17,19 @@ export default class App extends Component {
         {
           title: "Screen One",
           left: "This is the left text",
-          right: "This is the right text",
+          right: <Vessel>
+            <Cargo />
+            <Cargo />
+          </Vessel>,
         },
         {
           title: "Screen Two",
           left: "This is the left text 2",
-          right: "This is the right text 2",
+          right: <Vessel>
+            <Cargo />
+            <Cargo />
+            <Cargo />
+          </Vessel>,
         },
       ],
       /** Index of the current screen */

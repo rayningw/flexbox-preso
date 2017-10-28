@@ -1,0 +1,6 @@
+.cargo {
+  min-height: 100px;
+  min-width: 100px;
+
+  border: 1px solid #222;
+}
