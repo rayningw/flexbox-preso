@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+
 import "./screen.css";
 
 export default class Screen extends Component {
@@ -6,12 +8,17 @@ export default class Screen extends Component {
     return (
       <div className="screen">
         <div className="screen-left">
-          This is the left
+          {this.props.left}
         </div>
         <div className="screen-right">
-          This is the right
+          {this.props.right}
         </div>
       </div>
     );
   }
 }
+
+Screen.propTypes = {
+  left: PropTypes.element.isRequired,
+  right: PropTypes.element.isRequired,
+};

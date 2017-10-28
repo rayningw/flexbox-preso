@@ -12,7 +12,7 @@ class App extends Component {
           <h1 className="app-title">Flexbox Preso</h1>
         </header>
         <div className="app-screens">
-          <Screen />
+          <Screen left="This is the left text" right="This is the right text" />
         </div>
       </div>
     );
