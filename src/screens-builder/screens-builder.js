@@ -1,3 +1,5 @@
+import React from "react";
+
 import _ from "lodash";
 
 /**
@@ -20,23 +22,33 @@ export default class ScreensBuilder {
   newScreen(title) {
     this.screens.push({
       title: title,
+      left: [],
+      right: [],
     });
     return this;
   }
 
   /**
-   * Sets the current screen's left content
+   * Sets the current screen's explanation
    */
-  withLeft(left) {
-    this.currentScreen().left = left;
+  withExplanation(explanation) {
+    this.currentScreen().left = [ explanation ];
     return this;
   }
 
   /**
-   * Sets the current screen's right content
+   * Adds to the current screen's explanation
    */
-  withRight(right) {
-    this.currentScreen().right = right;
+  addExplanation(explanation) {
+    this.currentScreen().left.push(explanation);
+    return this;
+  }
+
+  /**
+   * Sets the current screen's demo pane
+   */
+  withDemoPane(element) {
+    this.currentScreen().right = [ element ];
     return this;
   }
 
@@ -49,24 +61,28 @@ export default class ScreensBuilder {
   }
 
   /**
-   * Clones the current screen then sets the left content
+   * Executes screen manipulations with demo flow
    */
-  changeLeft(left) {
-    return this.cloneScreen().withLeft(left);
-  }
-
-  /**
-   * Clones the current screen then sets the right content
-   */
-  changeRight(right) {
-    return this.cloneScreen().withRight(right);
+  executeDemoFlow(flow) {
+    flow.execute(this);
+    return this;
   }
 
   /**
    * Builds the screens
    */
   build() {
-    return this.screens;
+    function linesToDivs(lines) {
+      return lines.map((line, idx) => <div key={idx}>{line}</div>);
+    }
+
+    return this.screens.map(screen => {
+      return {
+        title: screen.title,
+        left: <div>{linesToDivs(screen.left)}</div>,
+        right: <div>{linesToDivs(screen.right)}</div>,
+      };
+    });
   }
 
 }

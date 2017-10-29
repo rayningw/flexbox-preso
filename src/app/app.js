@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import KeyHandler, { KEYPRESS } from "react-key-handler";
 
-import ScreensBuilder from "../screens-builder";
-import Cargo from "../cargo";
+import ScreensBuilder, { VesselDemoFlow } from "../screens-builder";
 import Screen from "../screen";
-import Vessel from "../vessel";
 
 import "./app.css";
 
@@ -24,11 +22,24 @@ export default class App extends Component {
   buildInitialScreens() {
     const builder = new ScreensBuilder()
       .newScreen("Flexbox Preso")
-      .withLeft("Welcome to the Flexbox presentation")
+      .withExplanation("Welcome to the Flexbox presentation")
       .newScreen("Flexbox Basics")
-      .withLeft("This is the left of the screen")
-      .withRight(<Vessel><Cargo /><Cargo /></Vessel>)
-      .changeRight(<Vessel><Cargo /><Cargo /><Cargo /></Vessel>);
+      .withExplanation("This is the left of the screen")
+      .executeDemoFlow(
+        new VesselDemoFlow()
+          .withNumberOfCargos(2)
+          .withExplanation("There are two cargos")
+          .changeNumberOfCargos(3)
+          .withExplanation("There are now three cargos")
+      )
+      .addExplanation("Here is some more explanation")
+      .newScreen("Flexbox Advanced")
+      .withExplanation("This is the real deal")
+      .executeDemoFlow(
+        new VesselDemoFlow()
+          .withNumberOfCargos(10)
+          .withExplanation("OMG")
+      );
     return builder.build();
   }
 

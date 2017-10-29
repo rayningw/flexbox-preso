@@ -5,15 +5,14 @@
   flex-direction: row;
 
   font-size: large;
-  border: 1px solid green;
 }
 
 .screen-left {
-  flex-basis: 50%;
+  width: 40%;
   border: 1px solid #222;
 }
 
 .screen-right {
-  flex-basis: 50%;
+  width: 60%;
   border: 1px solid #222;
 }
