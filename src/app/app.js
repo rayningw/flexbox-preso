@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import KeyHandler, { KEYPRESS } from "react-key-handler";
 
+import ScreensBuilder from "../screens-builder";
 import Cargo from "../cargo";
 import Screen from "../screen";
 import Vessel from "../vessel";
@@ -14,28 +15,21 @@ export default class App extends Component {
     
     this.state = {
       /** Linear sequence of screens */
-      screens: [
-        {
-          title: "Screen One",
-          left: "This is the left text",
-          right: <Vessel>
-            <Cargo />
-            <Cargo />
-          </Vessel>,
-        },
-        {
-          title: "Screen Two",
-          left: "This is the left text 2",
-          right: <Vessel>
-            <Cargo />
-            <Cargo />
-            <Cargo />
-          </Vessel>,
-        },
-      ],
+      screens: this.buildInitialScreens(),
       /** Index of the current screen */
       currentScreen: 0,
     };
+  }
+
+  buildInitialScreens() {
+    const builder = new ScreensBuilder()
+      .newScreen("Flexbox Preso")
+      .withLeft("Welcome to the Flexbox presentation")
+      .newScreen("Flexbox Basics")
+      .withLeft("This is the left of the screen")
+      .withRight(<Vessel><Cargo /><Cargo /></Vessel>)
+      .changeRight(<Vessel><Cargo /><Cargo /><Cargo /></Vessel>);
+    return builder.build();
   }
 
   handleGoBack() {
