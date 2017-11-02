@@ -26,23 +26,19 @@ export default class App extends Component {
       .newScreen("Flexbox Preso")
       .withExplanation("Welcome to the Flexbox presentation")
       .newScreen("Flexbox Basics")
-      .withExplanation("This is the left of the screen");
+      .withExplanation("Flexbox arranges elements within a container")
+      .appendExplanation("- Set CSS property `display: flex` on the container to enable it")
+      .appendExplanation("- Applies only to direct children. Children themselves can orthogonally have `display: flex` set on them.")
+      .appendExplanation("See it in action:");
 
     new VesselDemoFlow()
+      .newScreen()
       .withNumberOfCargos(2)
-      .withExplanation("There are two cargos")
-      .changeNumberOfCargos(3)
-      .withExplanation("There are now three cargos")
-      .execute(builder);
-
-    builder
-      .addExplanation("Here is some more explanation")
-      .newScreen("Flexbox Advanced")
-      .withExplanation("This is the real deal");
-
-    new VesselDemoFlow()
-      .withNumberOfCargos(10)
-      .withExplanation("OMG")
+      .withExplanationToAppend("There are two cargos")
+      .changeNumberOfCargos(4)
+      .withExplanationToAppend("There are more cargos")
+      .changeNumberOfCargos(8)
+      .changeNumberOfCargos(16)
       .execute(builder);
 
     return builder.build();

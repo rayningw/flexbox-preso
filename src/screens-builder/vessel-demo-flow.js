@@ -11,10 +11,8 @@ export default class VesselDemoFlow {
   
   constructor() {
     /** Definitions of what should appear on each screen */
-    this.definitions = [{
-      numberOfCargos: 0,
-      explanation: "",
-    }];
+    this.definitions = [];
+    this.newScreen();
   }
 
   currentDefinition() {
@@ -26,18 +24,21 @@ export default class VesselDemoFlow {
     return this;
   }
 
-  withExplanation(explanation) {
-    this.currentDefinition().explanation = explanation;
+  withExplanationToAppend(explanation) {
+    this.currentDefinition().explanationToAppend = explanation;
     return this;
   }
 
-  cloneScreen() {
-    this.definitions.push(_.cloneDeep(this.currentDefinition()));
+  newScreen() {
+    this.definitions.push({
+      numberOfCargos: 0,
+      explanationToAppend: null,
+    });
     return this;
   }
 
   changeNumberOfCargos(amount) {
-    return this.cloneScreen().withNumberOfCargos(amount);
+    return this.newScreen().withNumberOfCargos(amount);
   }
 
   execute(screens) {
@@ -50,7 +51,9 @@ export default class VesselDemoFlow {
         <Vessel>{cargos}</Vessel>
       );
       // Appends to the explanation
-      screens.addExplanation(definition.explanation);
+      if (screens.appendExplanation) {
+        screens.appendExplanation(definition.explanationToAppend);
+      }
       // Clone the screen to retain whatever was set outside of this flow context
       screens.cloneScreen();
     });

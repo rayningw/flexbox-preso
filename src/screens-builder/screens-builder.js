@@ -37,9 +37,9 @@ export default class ScreensBuilder {
   }
 
   /**
-   * Adds to the current screen's explanation
+   * Appends to the current screen's explanation
    */
-  addExplanation(explanation) {
+  appendExplanation(explanation) {
     this.currentScreen().left.push(explanation);
     return this;
   }
