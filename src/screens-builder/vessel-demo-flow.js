@@ -53,7 +53,7 @@ export default class VesselDemoFlow {
   }
 
   execute(screens) {
-    this.definitions.forEach(definition => {
+    this.definitions.forEach((definition, idx) => {
       const cargos = _.range(definition.numberOfCargos).map(idx => (
         <Cargo key={idx} />
       ));
@@ -66,7 +66,9 @@ export default class VesselDemoFlow {
         screens.appendExplanation(definition.explanationToAppend);
       }
       // Clone the screen to retain whatever was set outside of this flow context
-      screens.cloneScreen();
+      if (idx < this.definitions.length - 1) {
+        screens.cloneScreen();
+      }
     });
   }
 

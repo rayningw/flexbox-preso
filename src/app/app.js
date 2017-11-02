@@ -37,7 +37,9 @@ export default class App extends Component {
       .changeNumberOfCargos(4)
       .withExplanationToAppend("There are more cargos")
       .changeNumberOfCargos(8)
+      .withExplanationToAppend("There are even more cargos")
       .changeNumberOfCargos(16)
+      .withExplanationToAppend("There are heaps of cargos")
       .execute(builder);
     
     builder

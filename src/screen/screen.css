@@ -8,11 +8,11 @@
 }
 
 .screen-left {
-  width: 40%;
+  width: 480px;
   border: 1px solid #222;
 }
 
 .screen-right {
-  width: 60%;
+  flex: 1;
   border: 1px solid #222;
 }
