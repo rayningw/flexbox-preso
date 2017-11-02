@@ -26,19 +26,32 @@ export default class App extends Component {
       .newScreen("Flexbox Preso")
       .withExplanation("Welcome to the Flexbox presentation")
       .newScreen("Flexbox Basics")
-      .withExplanation("Flexbox arranges elements within a container")
+      .appendExplanation("Flexbox arranges elements within a container")
       .appendExplanation("- Set CSS property `display: flex` on the container to enable it")
       .appendExplanation("- Applies only to direct children. Children themselves can orthogonally have `display: flex` set on them.")
       .appendExplanation("See it in action:");
 
     new VesselDemoFlow()
-      .newScreen()
-      .withNumberOfCargos(2)
+      .changeNumberOfCargos(2)
       .withExplanationToAppend("There are two cargos")
       .changeNumberOfCargos(4)
       .withExplanationToAppend("There are more cargos")
       .changeNumberOfCargos(8)
       .changeNumberOfCargos(16)
+      .execute(builder);
+    
+    builder
+      .newScreen("Key Concepts")
+      .appendExplanation("Flex direction")
+      .appendExplanation("- Specified with the CSS `flex-direction` property")
+      .appendExplanation("- Either `row` (default for web) or `column` (default for React Native)")
+      .appendExplanation("Demo");
+    
+    new VesselDemoFlow()
+      .changeNumberOfCargos(4)
+      .withExplanationToAppend("`flex-direction: row`")
+      .changeFlexDirection("column")
+      .withExplanationToAppend("`flex-direction: column`")
       .execute(builder);
 
     return builder.build();

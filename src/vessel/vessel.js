@@ -13,7 +13,10 @@ export default class Vessel extends Component {
   }
 
   render() {
-    return <div className="vessel">
+    const style = {
+      flexDirection: this.props.flexDirection,
+    };
+    return <div className="vessel" style={style}>
       {this.props.children}
     </div>;
   }
@@ -21,5 +24,6 @@ export default class Vessel extends Component {
 }
 
 Vessel.propTypes = {
+  flexDirection: PropTypes.oneOf([ "row", "column" ]).isRequired,
   children: PropTypes.arrayOf(PropTypes.element),
 };

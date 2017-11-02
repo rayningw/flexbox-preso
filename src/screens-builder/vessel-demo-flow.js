@@ -11,8 +11,11 @@ export default class VesselDemoFlow {
   
   constructor() {
     /** Definitions of what should appear on each screen */
-    this.definitions = [];
-    this.newScreen();
+    this.definitions = [{
+      numberOfCargos: 0,
+      explanationToAppend: null,
+      flexDirection: "row",
+    }];
   }
 
   currentDefinition() {
@@ -24,21 +27,29 @@ export default class VesselDemoFlow {
     return this;
   }
 
+  withFlexDirection(direction) {
+    this.currentDefinition().flexDirection = direction;
+    return this;
+  }
+
   withExplanationToAppend(explanation) {
     this.currentDefinition().explanationToAppend = explanation;
     return this;
   }
 
-  newScreen() {
-    this.definitions.push({
-      numberOfCargos: 0,
-      explanationToAppend: null,
-    });
+  cloneScreen() {
+    const clone = _.cloneDeep(this.currentDefinition());
+    clone.explanationToAppend = null,
+    this.definitions.push(clone);
     return this;
   }
 
   changeNumberOfCargos(amount) {
-    return this.newScreen().withNumberOfCargos(amount);
+    return this.cloneScreen().withNumberOfCargos(amount);
+  }
+
+  changeFlexDirection(direction) {
+    return this.cloneScreen().withFlexDirection(direction);
   }
 
   execute(screens) {
@@ -48,7 +59,7 @@ export default class VesselDemoFlow {
       ));
       // Modifies the demo pane
       screens.withDemoPane(
-        <Vessel>{cargos}</Vessel>
+        <Vessel flexDirection={definition.flexDirection}>{cargos}</Vessel>
       );
       // Appends to the explanation
       if (screens.appendExplanation) {
