@@ -20,26 +20,31 @@ export default class App extends Component {
   }
 
   buildInitialScreens() {
-    const builder = new ScreensBuilder()
+    const builder = new ScreensBuilder();
+
+    builder
       .newScreen("Flexbox Preso")
       .withExplanation("Welcome to the Flexbox presentation")
       .newScreen("Flexbox Basics")
-      .withExplanation("This is the left of the screen")
-      .executeDemoFlow(
-        new VesselDemoFlow()
-          .withNumberOfCargos(2)
-          .withExplanation("There are two cargos")
-          .changeNumberOfCargos(3)
-          .withExplanation("There are now three cargos")
-      )
+      .withExplanation("This is the left of the screen");
+
+    new VesselDemoFlow()
+      .withNumberOfCargos(2)
+      .withExplanation("There are two cargos")
+      .changeNumberOfCargos(3)
+      .withExplanation("There are now three cargos")
+      .execute(builder);
+
+    builder
       .addExplanation("Here is some more explanation")
       .newScreen("Flexbox Advanced")
-      .withExplanation("This is the real deal")
-      .executeDemoFlow(
-        new VesselDemoFlow()
-          .withNumberOfCargos(10)
-          .withExplanation("OMG")
-      );
+      .withExplanation("This is the real deal");
+
+    new VesselDemoFlow()
+      .withNumberOfCargos(10)
+      .withExplanation("OMG")
+      .execute(builder);
+
     return builder.build();
   }
 
