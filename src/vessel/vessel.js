@@ -15,6 +15,7 @@ export default class Vessel extends Component {
   render() {
     const style = {
       flexDirection: this.props.flexDirection,
+      justifyContent: this.props.justifyContent,
     };
     return <div className="vessel" style={style}>
       {this.props.children}
@@ -25,5 +26,6 @@ export default class Vessel extends Component {
 
 Vessel.propTypes = {
   flexDirection: PropTypes.oneOf([ "row", "column" ]).isRequired,
+  justifyContent: PropTypes.oneOf([ "flex-start", "flex-end", "center", "space-around", "space-between" ]).isRequired,
   children: PropTypes.arrayOf(PropTypes.element),
 };

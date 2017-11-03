@@ -43,17 +43,39 @@ export default class App extends Component {
       .execute(builder);
     
     builder
-      .newScreen("Key Concepts")
-      .appendExplanation("Flex direction")
-      .appendExplanation("- Specified with the CSS `flex-direction` property")
-      .appendExplanation("- Either `row` (default for web) or `column` (default for React Native)")
+      .newScreen("Flex Direction")
+      .appendExplanation("Specifies the direction of the `main axis`")
+      .appendExplanation("At the same time specifies the direction of the perpendicular `cross axis`")
+      .appendExplanation("CSS `flex-direction` property")
+      .appendExplanation("Either `row` (default for web) or `column` (default for React Native)")
       .appendExplanation("Demo");
     
     new VesselDemoFlow()
       .changeNumberOfCargos(4)
-      .withExplanationToAppend("`flex-direction: row`")
+      .withFlexDirection("row")
+      .withExplanationToAppend("`flex-direction: row` (default for web)")
       .changeFlexDirection("column")
       .withExplanationToAppend("`flex-direction: column`")
+      .execute(builder);
+
+    builder
+      .newScreen("Justification")
+      .appendExplanation("Justify content on the main axis")
+      .appendExplanation("CSS `justify-content` property")
+      .appendExplanation("Demo");
+    
+    new VesselDemoFlow()
+      .changeNumberOfCargos(4)
+      .withJustifyContent("flex-start")
+      .withExplanationToAppend("`justify-content: flex-start` (default)")
+      .changeJustifyContent("flex-end")
+      .withExplanationToAppend("`justify-content: flex-end`")
+      .changeJustifyContent("center")
+      .withExplanationToAppend("`justify-content: center`")
+      .changeJustifyContent("space-around")
+      .withExplanationToAppend("`justify-content: space-around`")
+      .changeJustifyContent("space-between")
+      .withExplanationToAppend("`justify-content: space-between`")
       .execute(builder);
 
     return builder.build();
