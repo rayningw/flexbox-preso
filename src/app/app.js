@@ -27,8 +27,8 @@ export default class App extends Component {
       .withExplanation("Welcome to the Flexbox presentation")
       .newScreen("Flexbox Basics")
       .appendExplanation("Flexbox arranges elements within a container")
-      .appendExplanation("- Set CSS property `display: flex` on the container to enable it")
-      .appendExplanation("- Applies only to direct children. Children themselves can orthogonally have `display: flex` set on them.")
+      .appendExplanation("Set CSS property `display: flex` on the container to enable it")
+      .appendExplanation("Applies only to direct children. Children themselves can orthogonally have `display: flex` set on them.")
       .appendExplanation("See it in action:");
 
     new VesselDemoFlow()

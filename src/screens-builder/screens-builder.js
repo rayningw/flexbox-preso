@@ -73,7 +73,7 @@ export default class ScreensBuilder {
    */
   build() {
     function linesToDivs(lines) {
-      return lines.map((line, idx) => <div key={idx}>{line}</div>);
+      return lines.map((line, idx) => <div key={idx} className="paragraph">{line}</div>);
     }
 
     return this.screens.map(screen => {
