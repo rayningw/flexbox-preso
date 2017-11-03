@@ -7,20 +7,16 @@
   font-size: large;
 }
 
-.screen-left {
-  width: 480px;
+.screen-explanation-pane {
+  width: 40%;
   padding: 16px;
 
   border: 1px solid #222;
 }
 
-.screen-right {
-  flex: 1;
+.screen-demo-pane {
+  width: 60%;
   padding: 16px;
 
   border: 1px solid #222;
-}
-
-.paragraph {
-  margin-top: 8px;
 }

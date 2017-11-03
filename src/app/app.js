@@ -109,7 +109,7 @@ export default class App extends Component {
           </div>
         </header>
         <div className="app-screens">
-          <Screen left={screen.left} right={screen.right} />
+          <Screen explanation={screen.explanation} demoPane={screen.demoPane} />
         </div>
       </div>
     );

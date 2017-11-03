@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import ReactMarkdown from "react-markdown";
 
 import "./screen.css";
 
@@ -7,11 +8,11 @@ export default class Screen extends Component {
   render() {
     return (
       <div className="screen">
-        <div className="screen-left">
-          {this.props.left}
+        <div className="screen-explanation-pane">
+          <ReactMarkdown source={this.props.explanation} />
         </div>
-        <div className="screen-right">
-          {this.props.right}
+        <div className="screen-demo-pane">
+          {this.props.demoPane}
         </div>
       </div>
     );
@@ -19,6 +20,6 @@ export default class Screen extends Component {
 }
 
 Screen.propTypes = {
-  left: PropTypes.element.isRequired,
-  right: PropTypes.element.isRequired,
+  explanation: PropTypes.string.isRequired,
+  demoPane: PropTypes.element.isRequired,
 };

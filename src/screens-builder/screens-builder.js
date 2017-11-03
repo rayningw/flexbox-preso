@@ -1,5 +1,3 @@
-import React from "react";
-
 import _ from "lodash";
 
 /**
@@ -22,8 +20,8 @@ export default class ScreensBuilder {
   newScreen(title) {
     this.screens.push({
       title: title,
-      left: [],
-      right: [],
+      explanationLines: [],
+      demoPane: null,
     });
     return this;
   }
@@ -32,7 +30,7 @@ export default class ScreensBuilder {
    * Sets the current screen's explanation
    */
   withExplanation(explanation) {
-    this.currentScreen().left = [ explanation ];
+    this.currentScreen().explanationLines = [ explanation ];
     return this;
   }
 
@@ -40,7 +38,7 @@ export default class ScreensBuilder {
    * Appends to the current screen's explanation
    */
   appendExplanation(explanation) {
-    this.currentScreen().left.push(explanation);
+    this.currentScreen().explanationLines.push(explanation);
     return this;
   }
 
@@ -48,7 +46,7 @@ export default class ScreensBuilder {
    * Sets the current screen's demo pane
    */
   withDemoPane(element) {
-    this.currentScreen().right = [ element ];
+    this.currentScreen().demoPane = element;
     return this;
   }
 
@@ -72,15 +70,11 @@ export default class ScreensBuilder {
    * Builds the screens
    */
   build() {
-    function linesToDivs(lines) {
-      return lines.map((line, idx) => <div key={idx} className="paragraph">{line}</div>);
-    }
-
     return this.screens.map(screen => {
       return {
         title: screen.title,
-        left: <div>{linesToDivs(screen.left)}</div>,
-        right: <div>{linesToDivs(screen.right)}</div>,
+        explanation: screen.explanationLines.join("\n\n"),
+        demoPane: screen.demoPane,
       };
     });
   }
