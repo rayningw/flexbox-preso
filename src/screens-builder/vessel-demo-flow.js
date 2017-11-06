@@ -18,7 +18,8 @@ export default class VesselDemoFlow {
       flexDirection: "row",
       justifyContent: "flex-start",
 
-      globalCargoFlexBasis: "auto",
+      globalCargoFlexBasis: null,
+      globalCargoFlexGrow: null,
     }];
   }
 
@@ -51,6 +52,11 @@ export default class VesselDemoFlow {
     return this;
   }
 
+  withGlobalCargoFlexGrow(grow) {
+    this.currentDefinition().globalCargoFlexGrow = grow;
+    return this;
+  }
+
   cloneScreen() {
     const clone = _.cloneDeep(this.currentDefinition());
     clone.explanationToAppend = null,
@@ -74,7 +80,8 @@ export default class VesselDemoFlow {
     this.definitions.forEach((definition, idx) => {
       const cargos = _.range(definition.numberOfCargos).map(idx => {
         const flexBasis = definition.globalCargoFlexBasis;
-        return <Cargo key={idx} flexBasis={flexBasis} />;
+        const flexGrow = definition.globalCargoFlexGrow;
+        return <Cargo key={idx} flexBasis={flexBasis} flexGrow={flexGrow} />;
       });
       // Modifies the demo pane
       screens.withDemoPane(

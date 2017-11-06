@@ -83,6 +83,7 @@ export default class App extends Component {
     
     builder
       .newScreen("Flex Values")
+      .appendExplanation("## Flex Basis")
       .appendExplanation("Flex Basis determines the `main size` of the item")
       .appendExplanation("Main size refers to the size along its main axis")
       .appendExplanation("**Demo**")
@@ -93,8 +94,29 @@ export default class App extends Component {
       .withGlobalCargoFlexBasis("auto")
       .withExplanationToAppend("`flex-basis: auto` (default)")
       .cloneScreen()
-      .withGlobalCargoFlexBasis("120px")
-      .withExplanationToAppend("`flex-basis: 120px`")
+      .withGlobalCargoFlexBasis("160px")
+      .withExplanationToAppend("`flex-basis: 160px`")
+      .execute(builder);
+    
+    builder
+      .cloneScreen()
+      .appendExplanation("## Flex Grow")
+      .appendExplanation("Flex Grow determines the **rate** of growth to fill the container")
+      .appendExplanation("Growth rate is relative to siblings")
+      .appendExplanation("**Demo**")
+      .withDemoPane(null)
+      .cloneScreen();
+    
+    new VesselDemoFlow()
+      .withNumberOfCargos(4)
+      .withGlobalCargoFlexGrow("0")
+      .withExplanationToAppend("`flex-grow: 0` (default)")
+      .cloneScreen()
+      .withGlobalCargoFlexGrow("1")
+      .withExplanationToAppend("`flex-grow: 1`")
+      .cloneScreen()
+      .withGlobalCargoFlexGrow("2")
+      .withExplanationToAppend("`flex-grow: 2`")
       .execute(builder);
 
     return builder.build();
