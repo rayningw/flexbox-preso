@@ -15,7 +15,7 @@ export default class App extends Component {
       /** Linear sequence of screens */
       screens: this.buildInitialScreens(),
       /** Index of the current screen */
-      currentScreen: 4,
+      currentScreen: 15,
     };
   }
 
@@ -79,6 +79,22 @@ export default class App extends Component {
       .withExplanationToAppend("`justify-content: space-around`")
       .changeJustifyContent("space-between")
       .withExplanationToAppend("`justify-content: space-between`")
+      .execute(builder);
+    
+    builder
+      .newScreen("Flex Values")
+      .appendExplanation("Flex Basis determines the `main size` of the item")
+      .appendExplanation("Main size refers to the size along its main axis")
+      .appendExplanation("**Demo**")
+      .cloneScreen();
+    
+    new VesselDemoFlow()
+      .withNumberOfCargos(4)
+      .withGlobalCargoFlexBasis("auto")
+      .withExplanationToAppend("`flex-basis: auto` (default)")
+      .cloneScreen()
+      .withGlobalCargoFlexBasis("120px")
+      .withExplanationToAppend("`flex-basis: 120px`")
       .execute(builder);
 
     return builder.build();

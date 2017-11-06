@@ -9,12 +9,12 @@ import "./cargo.css";
  */
 export default class Cargo extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    return <div className="cargo">
+    const style = {
+      flexBasis: this.props.flexBasis,
+    };
+
+    return <div className="cargo" style={style}>
       Cargo
     </div>;
   }
@@ -22,4 +22,5 @@ export default class Cargo extends Component {
 }
 
 Cargo.propTypes = {
+  flexBasis: PropTypes.string.isRequired,
 };

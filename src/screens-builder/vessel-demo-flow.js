@@ -14,8 +14,11 @@ export default class VesselDemoFlow {
     this.definitions = [{
       numberOfCargos: 0,
       explanationToAppend: null,
+
       flexDirection: "row",
       justifyContent: "flex-start",
+
+      globalCargoFlexBasis: "auto",
     }];
   }
 
@@ -43,6 +46,11 @@ export default class VesselDemoFlow {
     return this;
   }
 
+  withGlobalCargoFlexBasis(basis) {
+    this.currentDefinition().globalCargoFlexBasis = basis;
+    return this;
+  }
+
   cloneScreen() {
     const clone = _.cloneDeep(this.currentDefinition());
     clone.explanationToAppend = null,
@@ -64,9 +72,10 @@ export default class VesselDemoFlow {
 
   execute(screens) {
     this.definitions.forEach((definition, idx) => {
-      const cargos = _.range(definition.numberOfCargos).map(idx => (
-        <Cargo key={idx} />
-      ));
+      const cargos = _.range(definition.numberOfCargos).map(idx => {
+        const flexBasis = definition.globalCargoFlexBasis;
+        return <Cargo key={idx} flexBasis={flexBasis} />;
+      });
       // Modifies the demo pane
       screens.withDemoPane(
         <Vessel
