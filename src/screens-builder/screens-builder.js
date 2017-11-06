@@ -15,7 +15,7 @@ export default class ScreensBuilder {
   }
 
   /**
-   * Creates a new screen
+   * Creates a new blank screen
    */
   newScreen(title) {
     this.screens.push({

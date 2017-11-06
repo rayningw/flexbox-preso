@@ -29,10 +29,11 @@ export default class App extends Component {
       .appendExplanation("Flexbox arranges elements within a container")
       .appendExplanation("Set CSS property `display: flex` on the container to enable it")
       .appendExplanation("Applies only to direct children. Children themselves can orthogonally have `display: flex` set on them.")
-      .appendExplanation("**See it in action**");
+      .appendExplanation("**See it in action**")
+      .cloneScreen();
 
     new VesselDemoFlow()
-      .changeNumberOfCargos(2)
+      .withNumberOfCargos(2)
       .withExplanationToAppend("There are two cargos")
       .changeNumberOfCargos(4)
       .withExplanationToAppend("There are more cargos")
@@ -48,10 +49,11 @@ export default class App extends Component {
       .appendExplanation("At the same time specifies the direction of the perpendicular `cross axis`")
       .appendExplanation("CSS `flex-direction` property")
       .appendExplanation("Either `row` (default for web) or `column` (default for React Native)")
-      .appendExplanation("**Demo**");
+      .appendExplanation("**Demo**")
+      .cloneScreen();
     
     new VesselDemoFlow()
-      .changeNumberOfCargos(4)
+      .withNumberOfCargos(4)
       .withFlexDirection("row")
       .withExplanationToAppend("`flex-direction: row` (default for web)")
       .changeFlexDirection("column")
@@ -62,10 +64,11 @@ export default class App extends Component {
       .newScreen("Justification")
       .appendExplanation("Justify content on the main axis")
       .appendExplanation("CSS `justify-content` property")
-      .appendExplanation("**Demo**");
+      .appendExplanation("**Demo**")
+      .cloneScreen();
     
     new VesselDemoFlow()
-      .changeNumberOfCargos(4)
+      .withNumberOfCargos(4)
       .withJustifyContent("flex-start")
       .withExplanationToAppend("`justify-content: flex-start` (default)")
       .changeJustifyContent("flex-end")
