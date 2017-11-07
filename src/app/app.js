@@ -62,7 +62,7 @@ export default class App extends Component {
 
     builder
       .newScreen("Justification")
-      .appendExplanation("Justify content on the main axis")
+      .appendExplanation("## Justifying items on the main axis")
       .appendExplanation("CSS `justify-content` property")
       .appendExplanation("**Demo**")
       .cloneScreen();
@@ -79,6 +79,36 @@ export default class App extends Component {
       .withExplanationToAppend("`justify-content: space-around`")
       .changeJustifyContent("space-between")
       .withExplanationToAppend("`justify-content: space-between`")
+      .execute(builder);
+
+    builder
+      .newScreen("Alignment")
+      .appendExplanation("## Aligning items on the cross axis")
+      .appendExplanation("CSS `align-items` property")
+      .appendExplanation("**Demo**")
+      .cloneScreen();
+    
+    new VesselDemoFlow()
+      .withNumberOfCargos(4)
+      .withAlignItems("stretch")
+      .withExplanationToAppend("`align-items: stretch` (default)")
+      .cloneScreen()
+      .withAlignItems("center")
+      .withExplanationToAppend("`align-items: center`")
+      .cloneScreen()
+      .withAlignItems("flex-start")
+      .withExplanationToAppend("`align-items: flex-start`")
+      .cloneScreen()
+      .withAlignItems("flex-end")
+      .withExplanationToAppend("`align-items: flex-end`")
+      .cloneScreen()
+      .withJustifyContent("flex-end")
+      .withAlignItems("flex-end")
+      .withExplanationToAppend(
+        "`justify-content: flex-end`" +
+        "\n\n`align-items: flex-end`" +
+        "\n\nCombining justification and alignment"
+      )
       .execute(builder);
     
     builder

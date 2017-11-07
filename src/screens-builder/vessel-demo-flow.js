@@ -15,11 +15,15 @@ export default class VesselDemoFlow {
       numberOfCargos: 0,
       explanationToAppend: null,
 
-      flexDirection: "row",
-      justifyContent: "flex-start",
+      flexDirection: null,
+      justifyContent: null,
+      alignItems: null,
 
       globalCargoFlexBasis: null,
       globalCargoFlexGrow: null,
+
+      particularCargoFlexBasis: {},
+      particularCargoFlexGrow: {},
     }];
   }
 
@@ -42,6 +46,11 @@ export default class VesselDemoFlow {
     return this;
   }
 
+  withAlignItems(align) {
+    this.currentDefinition().alignItems = align;
+    return this;
+  }
+
   withExplanationToAppend(explanation) {
     this.currentDefinition().explanationToAppend = explanation;
     return this;
@@ -54,6 +63,16 @@ export default class VesselDemoFlow {
 
   withGlobalCargoFlexGrow(grow) {
     this.currentDefinition().globalCargoFlexGrow = grow;
+    return this;
+  }
+
+  withParticularCargoFlexBasis(index, basis) {
+    this.currentDefinition().particularCargoFlexBasis[index] = basis;
+    return this;
+  }
+
+  withParticularCargoFlexGrow(index, grow) {
+    this.currentDefinition().particularCargoFlexGrow[index] = grow;
     return this;
   }
 
@@ -79,15 +98,17 @@ export default class VesselDemoFlow {
   execute(screens) {
     this.definitions.forEach((definition, idx) => {
       const cargos = _.range(definition.numberOfCargos).map(idx => {
-        const flexBasis = definition.globalCargoFlexBasis;
-        const flexGrow = definition.globalCargoFlexGrow;
+        const flexBasis = definition.particularCargoFlexBasis[idx] || definition.globalCargoFlexBasis;
+        const flexGrow = definition.particularCargoFlexGrow[idx] || definition.globalCargoFlexGrow;
         return <Cargo key={idx} flexBasis={flexBasis} flexGrow={flexGrow} />;
       });
       // Modifies the demo pane
       screens.withDemoPane(
         <Vessel
           flexDirection={definition.flexDirection}
-          justifyContent={definition.justifyContent}>
+          justifyContent={definition.justifyContent}
+          alignItems={definition.alignItems}
+        >
           {cargos}
         </Vessel>
       );

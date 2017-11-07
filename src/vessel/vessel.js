@@ -16,8 +16,15 @@ export default class Vessel extends Component {
   renderVesselProperties() {
     let markdown = "";
     markdown += "```\n";
-    markdown += `flex-direction: ${this.props.flexDirection};\n`;
-    markdown += `justify-content: ${this.props.justifyContent};\n`;
+    if (this.props.flexDirection) {
+      markdown += `flex-direction: ${this.props.flexDirection};\n`;
+    }
+    if (this.props.justifyContent) {
+      markdown += `justify-content: ${this.props.justifyContent};\n`;
+    }
+    if (this.props.alignItems) {
+      markdown += `align-items: ${this.props.alignItems};\n`;
+    }
     markdown += "```\n";
     return <div className="vessel-properties">
       <ReactMarkdown source={markdown} />
@@ -31,6 +38,7 @@ export default class Vessel extends Component {
     const childrenContainerStyle = {
       flexDirection: this.props.flexDirection,
       justifyContent: this.props.justifyContent,
+      alignItems: this.props.alignItems,
     };
     return <div className="vessel" style={vesselStyle}>
       <div className="vessel-title">Vessel</div>
@@ -44,7 +52,8 @@ export default class Vessel extends Component {
 }
 
 Vessel.propTypes = {
-  flexDirection: PropTypes.oneOf([ "row", "column" ]).isRequired,
-  justifyContent: PropTypes.oneOf([ "flex-start", "flex-end", "center", "space-around", "space-between" ]).isRequired,
+  flexDirection: PropTypes.string,
+  justifyContent: PropTypes.string,
+  alignItems: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.element),
 };
