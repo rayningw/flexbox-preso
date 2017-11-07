@@ -15,7 +15,7 @@ export default class App extends Component {
       /** Linear sequence of screens */
       screens: this.buildInitialScreens(),
       /** Index of the current screen */
-      currentScreen: 15,
+      currentScreen: 30,
     };
   }
 
@@ -112,7 +112,7 @@ export default class App extends Component {
       .execute(builder);
     
     builder
-      .newScreen("Flex Values")
+      .newScreen("Sizing")
       .appendExplanation("## Flex Basis")
       .appendExplanation("Flex Basis determines the `main size` of the item")
       .appendExplanation("Main size refers to the size along its main axis")
@@ -136,6 +136,7 @@ export default class App extends Component {
       .cloneScreen()
       .appendExplanation("## Flex Grow")
       .appendExplanation("Flex Grow determines the **rate** of growth to fill the container")
+      .appendExplanation("`flex-grow` CSS property on the flex item (cargo)")
       .appendExplanation("Growth rate is relative to siblings")
       .appendExplanation("**Demo**")
       .withDemoPane(null)
@@ -158,6 +159,45 @@ export default class App extends Component {
         "`flex-grow: 3` on second item, `flow-grow: 1` on others" +
         "\n\nFor every 1 pixel of free space given to the others, 3 pixels are given to the second item")
       .execute(builder);
+    
+    builder
+      .newScreen("Sizing")
+      .appendExplanation("## Flex Shrink")
+      .appendExplanation("Flex Shrink determines the **rate** of shrinkage to fit into the container")
+      .appendExplanation("`flex-shrink` CSS property on the flex item (cargo)")
+      .appendExplanation("Similar to `flex-grow`, the shrink rate is relative to siblings")
+      .appendExplanation("**Demo**")
+      .withDemoPane(null)
+      .cloneScreen();
+    
+    new VesselDemoFlow()
+      .withNumberOfCargos(4)
+      .withGlobalCargoFlexShrink("1")
+      .withGlobalCargoContent("More text to illustrate shrinking")
+      .withExplanationToAppend("`flex-shrink: 1` (default). Shrink at the same rate.")
+      .cloneScreen()
+      .withMaxWidth("800px")
+      .withExplanationToAppend("Vessel has shrunk")
+      .cloneScreen()
+      .withGlobalCargoFlexShrink("1")
+      .withParticularCargoFlexShrink(1, 3)
+      .withExplanationToAppend(
+        "`flex-shrink: 3` on second item, `flow-shrink: 1` on others" +
+        "\n\nFor every 1 pixel of free space taken away from others, 3 pixels are taken away from the second item")
+      .cloneScreen()
+      .withGlobalCargoFlexShrink("0")
+      .withExplanationToAppend("`flex-shrink: 0`. Do not shrink.")
+      .execute(builder);
+    
+    builder
+      .cloneScreen()
+      .appendExplanation("## Flex Shorthand")
+      .appendExplanation("`flex` CSS property is simply a shorthand")
+      .withDemoPane(null)
+      .cloneScreen()
+      .appendExplanation("`flex: <flex-grow>`")
+      .cloneScreen()
+      .appendExplanation("`flex: <flex-grow> <flex-shrink> <flex-basis>`");
 
     return builder.build();
   }

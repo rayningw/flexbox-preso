@@ -18,12 +18,16 @@ export default class VesselDemoFlow {
       flexDirection: null,
       justifyContent: null,
       alignItems: null,
+      maxWidth: null,
 
       globalCargoFlexBasis: null,
       globalCargoFlexGrow: null,
+      globalCargoFlexShrink: null,
+      globalCargoContent: null,
 
       particularCargoFlexBasis: {},
       particularCargoFlexGrow: {},
+      particularCargoFlexShrink: {},
     }];
   }
 
@@ -51,6 +55,11 @@ export default class VesselDemoFlow {
     return this;
   }
 
+  withMaxWidth(maxWidth) {
+    this.currentDefinition().maxWidth = maxWidth;
+    return this;
+  }
+
   withExplanationToAppend(explanation) {
     this.currentDefinition().explanationToAppend = explanation;
     return this;
@@ -58,11 +67,25 @@ export default class VesselDemoFlow {
 
   withGlobalCargoFlexBasis(basis) {
     this.currentDefinition().globalCargoFlexBasis = basis;
+    this.currentDefinition().particularCargoFlexBasis = {};
     return this;
   }
 
   withGlobalCargoFlexGrow(grow) {
     this.currentDefinition().globalCargoFlexGrow = grow;
+    this.currentDefinition().particularCargoFlexGrow = {};
+    return this;
+  }
+
+  withGlobalCargoFlexShrink(shrink) {
+    this.currentDefinition().globalCargoFlexShrink = shrink;
+    this.currentDefinition().particularCargoFlexShrink = {};
+    return this;
+  }
+
+  withGlobalCargoContent(content) {
+    this.currentDefinition().globalCargoContent = content;
+    this.currentDefinition().particularCargoContent = {};
     return this;
   }
 
@@ -73,6 +96,11 @@ export default class VesselDemoFlow {
 
   withParticularCargoFlexGrow(index, grow) {
     this.currentDefinition().particularCargoFlexGrow[index] = grow;
+    return this;
+  }
+
+  withParticularCargoFlexShrink(index, shrink) {
+    this.currentDefinition().particularCargoFlexShrink[index] = shrink;
     return this;
   }
 
@@ -100,7 +128,11 @@ export default class VesselDemoFlow {
       const cargos = _.range(definition.numberOfCargos).map(idx => {
         const flexBasis = definition.particularCargoFlexBasis[idx] || definition.globalCargoFlexBasis;
         const flexGrow = definition.particularCargoFlexGrow[idx] || definition.globalCargoFlexGrow;
-        return <Cargo key={idx} flexBasis={flexBasis} flexGrow={flexGrow} />;
+        const flexShrink = definition.particularCargoFlexShrink[idx] || definition.globalCargoFlexShrink;
+        const content = definition.globalCargoContent;
+        return <Cargo key={idx} flexBasis={flexBasis} flexGrow={flexGrow} flexShrink={flexShrink}>
+          {content}
+        </Cargo>;
       });
       // Modifies the demo pane
       screens.withDemoPane(
@@ -108,6 +140,7 @@ export default class VesselDemoFlow {
           flexDirection={definition.flexDirection}
           justifyContent={definition.justifyContent}
           alignItems={definition.alignItems}
+          maxWidth={definition.maxWidth}
         >
           {cargos}
         </Vessel>

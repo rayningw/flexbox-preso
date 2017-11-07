@@ -19,6 +19,9 @@ export default class Cargo extends Component {
     if (this.props.flexGrow) {
       markdown += `\nflex-grow:\n${this.props.flexGrow};\n`;
     }
+    if (this.props.flexShrink) {
+      markdown += `\nflex-shrink:\n${this.props.flexShrink};\n`;
+    }
     markdown += "```\n";
     return <div className="cargo-properties">
       <ReactMarkdown source={markdown} />
@@ -29,11 +32,13 @@ export default class Cargo extends Component {
     const style = {
       flexBasis: this.props.flexBasis,
       flexGrow: this.props.flexGrow,
+      flexShrink: this.props.flexShrink,
     };
 
     return <div className="cargo" style={style}>
       Cargo
       {this.renderProperties()}
+      {this.props.children}
     </div>;
   }
 
@@ -42,4 +47,6 @@ export default class Cargo extends Component {
 Cargo.propTypes = {
   flexBasis: PropTypes.string,
   flexGrow: PropTypes.string,
+  flexShrink: PropTypes.string,
+  children: PropTypes.element,
 };

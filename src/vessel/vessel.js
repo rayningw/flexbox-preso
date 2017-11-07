@@ -25,6 +25,9 @@ export default class Vessel extends Component {
     if (this.props.alignItems) {
       markdown += `align-items: ${this.props.alignItems};\n`;
     }
+    if (this.props.maxWidth) {
+      markdown += `max-width: ${this.props.maxWidth};\n`;
+    }
     markdown += "```\n";
     return <div className="vessel-properties">
       <ReactMarkdown source={markdown} />
@@ -33,6 +36,7 @@ export default class Vessel extends Component {
 
   render() {
     const vesselStyle = {
+      width: this.props.maxWidth,
     };
 
     const childrenContainerStyle = {
@@ -55,5 +59,6 @@ Vessel.propTypes = {
   flexDirection: PropTypes.string,
   justifyContent: PropTypes.string,
   alignItems: PropTypes.string,
+  maxWidth: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.element),
 };
