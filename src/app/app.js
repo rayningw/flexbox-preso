@@ -96,6 +96,10 @@ export default class App extends Component {
       .cloneScreen()
       .withGlobalCargoFlexBasis("160px")
       .withExplanationToAppend("`flex-basis: 160px`")
+      .cloneScreen()
+      .withGlobalCargoFlexBasis("auto")
+      .withParticularCargoFlexBasis(1, "300px")
+      .withExplanationToAppend("`flex-basis: 300px` on second cargo only")
       .execute(builder);
     
     builder
@@ -110,13 +114,19 @@ export default class App extends Component {
     new VesselDemoFlow()
       .withNumberOfCargos(4)
       .withGlobalCargoFlexGrow("0")
-      .withExplanationToAppend("`flex-grow: 0` (default)")
+      .withExplanationToAppend("`flex-grow: 0` (default). No growth.")
       .cloneScreen()
       .withGlobalCargoFlexGrow("1")
-      .withExplanationToAppend("`flex-grow: 1`")
+      .withExplanationToAppend("`flex-grow: 1`. Free space is distributed evenly across all cargos.")
       .cloneScreen()
       .withGlobalCargoFlexGrow("2")
-      .withExplanationToAppend("`flex-grow: 2`")
+      .withExplanationToAppend("`flex-grow: 2`. No visual change.")
+      .cloneScreen()
+      .withGlobalCargoFlexGrow("1")
+      .withParticularCargoFlexGrow(1, 3)
+      .withExplanationToAppend(
+        "`flex-grow: 3` on second item, `flow-grow: 1` on others" +
+        "\n\nFor every 1 pixel of free space given to the others, 3 pixels are given to the second item")
       .execute(builder);
 
     return builder.build();
