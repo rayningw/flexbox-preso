@@ -225,6 +225,7 @@ export default class App extends Component {
         <header className="app-header">
           <h1 className="app-title">{screen.title}</h1>
           <div className="app-nav-buttons">
+            {this.state.currentScreen}
             <div className="app-nav-button" onClick={this.handleGoBack.bind(this)}><i className="fa fa-arrow-left" /></div>
             <div className="app-nav-button" onClick={this.handleGoForward.bind(this)}><i className="fa fa-arrow-right" /></div>
           </div>
