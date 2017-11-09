@@ -16,7 +16,7 @@ export default class App extends Component {
       /** Linear sequence of screens */
       screens: this.buildInitialScreens(),
       /** Index of the current screen */
-      currentScreen: 1,
+      currentScreen: 38,
     };
   }
 
@@ -25,9 +25,10 @@ export default class App extends Component {
 
     builder
       .newScreen("Flexbox Preso")
-      .withExplanation("Welcome to the Flexbox presentation")
+      .withExplanation("## Welcome to the Flexbox presentation")
       .appendExplanation("![cover](http://www.artnet.com/WebServices/images/ll00076lld98QJFgDVECfDrCWvaHBOcUREF/piet-mondrian-ohne-titel-(3-works).jpg)")
       .newScreen("Flexbox Basics")
+      .appendExplanation("## Containers and children")
       .appendExplanation("Flexbox arranges elements within a container")
       .appendExplanation("Set CSS property `display: flex` on the container to enable it")
       .appendExplanation("Applies only to direct children. Children themselves can have `display: flex` set to make them a flex container too.")
@@ -47,9 +48,12 @@ export default class App extends Component {
     
     builder
       .newScreen("Flex Direction")
-      .appendExplanation("Specifies the direction of the `main axis`")
-      .appendExplanation("At the same time specifies the direction of the perpendicular `cross axis`")
+      .appendExplanation("## Axes")
+      .appendExplanation("![cover](https://cdn.css-tricks.com/wp-content/uploads/2011/08/flexbox.png)")
+      .cloneScreen()
       .appendExplanation("CSS `flex-direction` property")
+      .appendExplanation("Specifies the direction of the **main axis**")
+      .appendExplanation("At the same time implies the direction of the **cross axis**")
       .appendExplanation("Either `row` (default for web) or `column` (default for React Native)")
       .appendExplanation("**Demo**")
       .cloneScreen();
@@ -64,8 +68,9 @@ export default class App extends Component {
 
     builder
       .newScreen("Justification")
-      .appendExplanation("## Justifying items on the main axis")
-      .appendExplanation("CSS `justify-content` property")
+      .appendExplanation("## Justifying items along the main axis")
+      .appendExplanation("![cover](https://cdn.css-tricks.com/wp-content/uploads/2011/08/flexbox.png)")
+      .appendExplanation("Use the CSS `justify-content` property")
       .appendExplanation("**Demo**")
       .cloneScreen();
     
@@ -85,7 +90,8 @@ export default class App extends Component {
 
     builder
       .newScreen("Alignment")
-      .appendExplanation("## Aligning items on the cross axis")
+      .appendExplanation("## Aligning items along the cross axis")
+      .appendExplanation("![cover](https://cdn.css-tricks.com/wp-content/uploads/2011/08/flexbox.png)")
       .appendExplanation("CSS `align-items` property")
       .appendExplanation("**Demo**")
       .cloneScreen();
@@ -107,16 +113,18 @@ export default class App extends Component {
       .withJustifyContent("flex-end")
       .withAlignItems("flex-end")
       .withExplanationToAppend(
-        "`justify-content: flex-end`" +
-        "\n\n`align-items: flex-end`" +
-        "\n\nCombining justification and alignment"
+        "Combining justification and alignment\n" +
+        "```\n" +
+        "justify-content: flex-end\n" +
+        "align-items: flex-end\n" +
+        "```\n"
       )
       .execute(builder);
     
     builder
       .newScreen("Sizing")
       .appendExplanation("## Flex Basis")
-      .appendExplanation("Flex Basis determines the `main size` of the item")
+      .appendExplanation("Flex Basis determines the **main size** of the item")
       .appendExplanation("Main size refers to the size along its main axis")
       .appendExplanation("**Demo**")
       .cloneScreen();
@@ -179,7 +187,8 @@ export default class App extends Component {
       .withExplanationToAppend("`flex-shrink: 1` (default). Shrink at the same rate.")
       .cloneScreen()
       .withMaxWidth("800px")
-      .withExplanationToAppend("Vessel has shrunk")
+      .withExplanationToAppend("Shrinking the vessel reduces available space.")
+      .withExplanationToAppend("All cargos shrink to the same size.")
       .cloneScreen()
       .withGlobalCargoFlexShrink("1")
       .withParticularCargoFlexShrink(1, 3)
@@ -194,12 +203,21 @@ export default class App extends Component {
     builder
       .cloneScreen()
       .appendExplanation("## Flex Shorthand")
-      .appendExplanation("`flex` CSS property is simply a shorthand")
-      .withDemoPane(null)
+      .appendExplanation("`flex` CSS property is simply a shorthand");
+    
+    new VesselDemoFlow()
+      .withNumberOfCargos(4)
+      .withExplanationToAppend("Usage 1: `flex: <flex-grow>`")
       .cloneScreen()
-      .appendExplanation("`flex: <flex-grow>`")
+      .withParticularCargoFlexGrow(1, 1)
+      .withExplanationToAppend("Setting `flex: 1` on one item but not others makes it fill remaining space")
+      .execute(builder);
+    
+    builder
       .cloneScreen()
-      .appendExplanation("`flex: <flex-grow> <flex-shrink> <flex-basis>`");
+      .appendExplanation("Usage 2: `flex: <flex-grow> <flex-shrink> <flex-basis>`")
+      .cloneScreen()
+      .appendExplanation("NOTE: React Native treats `flex` differently. See docs.");
     
     builder
       .newScreen("WhatsApp")
