@@ -58,11 +58,13 @@
   height: 80px;
   padding: 10px;
 
+  border: 1px solid #222;
+}
+
+.whatsapp-footer-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  border: 1px solid #222;
 }
 
 .whatsapp-footer-button {

@@ -13,6 +13,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+img {
+  max-height: 800px;
+}
+
 pre {
   margin: 0;
 }

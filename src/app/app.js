@@ -16,7 +16,7 @@ export default class App extends Component {
       /** Linear sequence of screens */
       screens: this.buildInitialScreens(),
       /** Index of the current screen */
-      currentScreen: 38,
+      currentScreen: 45,
     };
   }
 
@@ -220,10 +220,33 @@ export default class App extends Component {
       .appendExplanation("NOTE: React Native treats `flex` differently. See docs.");
     
     builder
-      .newScreen("WhatsApp")
-      .appendExplanation("## Building WhatsApp interface")
-      .appendExplanation("![whatsapp](http://is1.mzstatic.com/image/thumb/Purple69/v4/3e/d7/c0/3ed7c014-0654-8aab-0d55-90b973d3c17a/source/392x696bb.jpg)")
-      .withDemoPane(<WhatsApp />);
+      .newScreen("Building WhatsApp Interface")
+      .appendExplanation("![whatsapp](https://fd681cd3a0a40380ca85-667b5de929945cccc984187d6da5be32.ssl.cf1.rackcdn.com/preview/screenshots_ios/chats/cZuZ+2c1p3pmeG-rijU5/chat-thumb-iphone-1.png)")
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={0} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={1} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={2} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={3} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={4} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={5} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={6} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={7} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={8} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={9} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={10} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsApp stage={11} />)
+    ;
 
     return builder.build();
   }
