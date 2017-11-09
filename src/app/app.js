@@ -16,7 +16,7 @@ export default class App extends Component {
       /** Linear sequence of screens */
       screens: this.buildInitialScreens(),
       /** Index of the current screen */
-      currentScreen: 32,
+      currentScreen: 1,
     };
   }
 
@@ -26,10 +26,11 @@ export default class App extends Component {
     builder
       .newScreen("Flexbox Preso")
       .withExplanation("Welcome to the Flexbox presentation")
+      .appendExplanation("![cover](http://www.artnet.com/WebServices/images/ll00076lld98QJFgDVECfDrCWvaHBOcUREF/piet-mondrian-ohne-titel-(3-works).jpg)")
       .newScreen("Flexbox Basics")
       .appendExplanation("Flexbox arranges elements within a container")
       .appendExplanation("Set CSS property `display: flex` on the container to enable it")
-      .appendExplanation("Applies only to direct children. Children themselves can orthogonally have `display: flex` set on them.")
+      .appendExplanation("Applies only to direct children. Children themselves can have `display: flex` set to make them a flex container too.")
       .appendExplanation("**See it in action**")
       .cloneScreen();
 
