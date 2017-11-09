@@ -15,7 +15,6 @@ export default class Vessel extends Component {
 
   renderVesselProperties() {
     let markdown = "";
-    markdown += "```\n";
     if (this.props.flexDirection) {
       markdown += `flex-direction: ${this.props.flexDirection};\n`;
     }
@@ -28,7 +27,11 @@ export default class Vessel extends Component {
     if (this.props.maxWidth) {
       markdown += `max-width: ${this.props.maxWidth};\n`;
     }
-    markdown += "```\n";
+
+    if (markdown == "") {
+      return null;
+    }
+    markdown = "```\n" + markdown + "```\n";
     return <div className="vessel-properties">
       <ReactMarkdown source={markdown} />
     </div>;

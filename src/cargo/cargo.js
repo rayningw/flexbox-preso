@@ -12,7 +12,6 @@ export default class Cargo extends Component {
 
   renderProperties() {
     let markdown = "";
-    markdown += "```\n";
     if (this.props.flexBasis) {
       markdown += `\nflex-basis:\n${this.props.flexBasis};\n`;
     }
@@ -22,7 +21,11 @@ export default class Cargo extends Component {
     if (this.props.flexShrink) {
       markdown += `\nflex-shrink:\n${this.props.flexShrink};\n`;
     }
-    markdown += "```\n";
+
+    if (markdown == "") {
+      return null;
+    }
+    markdown = "```\n" + markdown + "```\n";
     return <div className="cargo-properties">
       <ReactMarkdown source={markdown} />
     </div>;

@@ -9,10 +9,10 @@
 
 .screen-explanation-pane {
   width: 40%;
-  padding: 16px;
+  padding: 16px 32px;
 }
 
 .screen-demo-pane {
   width: 60%;
-  padding: 16px;
+  padding: 16px 32px;
 }
