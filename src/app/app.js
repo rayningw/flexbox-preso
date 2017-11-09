@@ -3,7 +3,7 @@ import KeyHandler, { KEYPRESS } from "react-key-handler";
 
 import ScreensBuilder, { VesselDemoFlow } from "../screens-builder";
 import Screen from "../screen";
-import WhatsApp from "../whatsapp";
+import WhatsApp, { WhatsAppChatRow } from "../whatsapp";
 
 import "./app.css";
 
@@ -230,6 +230,18 @@ export default class App extends Component {
       .withDemoPane(<WhatsApp stage={2} />)
       .cloneScreen()
       .withDemoPane(<WhatsApp stage={3} />)
+      .cloneScreen()
+      .withDemoPane(<WhatsAppChatRow stage={1} title="7 Hudson" lastMessage="Someone's at the door go fetch them" lastMessageUser="Doorbot" lastMessageTime="11:45 AM" />)
+      .cloneScreen()
+      .withDemoPane(<WhatsAppChatRow stage={2} title="7 Hudson" lastMessage="Someone's at the door go fetch them" lastMessageUser="Doorbot" lastMessageTime="11:45 AM" />)
+      .cloneScreen()
+      .withDemoPane(<WhatsAppChatRow stage={3} title="7 Hudson" lastMessage="Someone's at the door go fetch them" lastMessageUser="Doorbot" lastMessageTime="11:45 AM" />)
+      .cloneScreen()
+      .withDemoPane(<WhatsAppChatRow stage={4} title="7 Hudson" lastMessage="Someone's at the door go fetch them" lastMessageUser="Doorbot" lastMessageTime="11:45 AM" />)
+      .cloneScreen()
+      .withDemoPane(<WhatsAppChatRow stage={5} title="7 Hudson" lastMessage="Someone's at the door go fetch them" lastMessageUser="Doorbot" lastMessageTime="11:45 AM" />)
+      .cloneScreen()
+      .withDemoPane(<WhatsAppChatRow stage={6} title="7 Hudson" lastMessage="Someone's at the door go fetch them" lastMessageUser="Doorbot" lastMessageTime="11:45 AM" />)
       .cloneScreen()
       .withDemoPane(<WhatsApp stage={4} />)
       .cloneScreen()

@@ -110,6 +110,12 @@
   border: 1px solid green;
 }
 
+.whatsapp-chat-row-summary-placeholder {
+  flex: 1;
+
+  border: 1px solid #222;
+}
+
 .whatsapp-chat-row-summary {
   margin: 0 6px;
 

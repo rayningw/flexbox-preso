@@ -118,7 +118,31 @@ WhatsApp.propTypes = {
   stage: PropTypes.number.isRequired,
 };
 
-class WhatsAppChatRow extends Component {
+export class WhatsAppChatRow extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.itemsToRenderAtStage = [
+      [], // HACK(ray): Corresponds to no stage so we don't want this to be a demo stage
+      [],
+      [ "icon" ],
+      [ "icon", "time-cell" ],
+      [ "icon", "time-cell", "next-arrow" ],
+      [ "icon", "summary-placeholder", "time-cell", "next-arrow" ],
+      [ "icon", "summary", "time-cell", "next-arrow" ],
+    ];
+  }
+
+  shouldRender(item) {
+    let itemsToRender;
+    if (!this.props.stage) {
+      itemsToRender = this.itemsToRenderAtStage[this.itemsToRenderAtStage.length-1];
+    } else {
+      itemsToRender = this.itemsToRenderAtStage[this.props.stage];
+    }
+    return itemsToRender.indexOf(item) != -1;
+  }
 
   renderLastMessageUser() {
     return <div className="whatsapp-chat-row-summary-last-message-user">
@@ -130,7 +154,13 @@ class WhatsAppChatRow extends Component {
     return <div>
       <div className="whatsapp-chat-row-divider" />
       <div className="whatsapp-chat-row">
+        { this.shouldRender("icon") &&
         <div className="whatsapp-chat-row-icon" />
+        }
+        { this.shouldRender("summary-placeholder") &&
+        <div className="whatsapp-chat-row-summary-placeholder" />
+        }
+        { this.shouldRender("summary") &&
         <div className="whatsapp-chat-row-summary">
           <div className="whatsapp-chat-row-summary-title">
             {this.props.title}
@@ -140,12 +170,17 @@ class WhatsAppChatRow extends Component {
             {this.props.lastMessage}
           </div>
         </div>
+        }
+        { this.shouldRender("time-cell") &&
         <div className="whatsapp-chat-row-time-cell">
           {this.props.lastMessageTime}
         </div>
+        }
+        { this.shouldRender("next-arrow") &&
         <div className="whatsapp-chat-row-next-arrow">
           ›
         </div>
+        }
       </div>
     </div>;
   }
@@ -153,13 +188,14 @@ class WhatsAppChatRow extends Component {
 }
 
 WhatsAppChatRow.propTypes = {
+  stage: PropTypes.number,
   title: PropTypes.string.isRequired,
   lastMessage: PropTypes.string.isRequired,
   lastMessageUser: PropTypes.string,
   lastMessageTime: PropTypes.string.isRequired,
 };
 
-class WhatsAppFooterButton extends Component {
+export class WhatsAppFooterButton extends Component {
 
   render() {
     return <div className="whatsapp-footer-button">
