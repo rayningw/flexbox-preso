@@ -5,4 +5,15 @@
   padding: 8px;
 
   border: 1px solid #222;
+  border-radius: 8px;
+  background-color: #FFEAEA;
+}
+
+.cargo-title {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.cargo-properties {
+  margin-bottom: 8px;
 }

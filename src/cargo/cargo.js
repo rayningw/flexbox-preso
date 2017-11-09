@@ -13,13 +13,13 @@ export default class Cargo extends Component {
   renderProperties() {
     let markdown = "";
     if (this.props.flexBasis) {
-      markdown += `\nflex-basis:\n${this.props.flexBasis};\n`;
+      markdown += `flex-basis:\n${this.props.flexBasis};\n`;
     }
     if (this.props.flexGrow) {
-      markdown += `\nflex-grow:\n${this.props.flexGrow};\n`;
+      markdown += `flex-grow:\n${this.props.flexGrow};\n`;
     }
     if (this.props.flexShrink) {
-      markdown += `\nflex-shrink:\n${this.props.flexShrink};\n`;
+      markdown += `flex-shrink:\n${this.props.flexShrink};\n`;
     }
 
     if (markdown == "") {
@@ -39,7 +39,7 @@ export default class Cargo extends Component {
     };
 
     return <div className="cargo" style={style}>
-      Cargo
+      <div className="cargo-title">Cargo</div>
       {this.renderProperties()}
       {this.props.children}
     </div>;

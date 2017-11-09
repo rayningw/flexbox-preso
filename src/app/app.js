@@ -16,7 +16,7 @@ export default class App extends Component {
       /** Linear sequence of screens */
       screens: this.buildInitialScreens(),
       /** Index of the current screen */
-      currentScreen: 38,
+      currentScreen: 32,
     };
   }
 
