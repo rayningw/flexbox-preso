@@ -1,0 +1,159 @@
+.whatsapp-screen {
+  width: 414px;
+  height: 736px;
+
+  display: flex;
+  padding: 10px;
+
+  border: 1px solid #222;
+}
+
+.whatsapp-container {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  border: 1px solid #222;
+}
+
+.whatsapp-header {
+  height: 60px;
+  padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid #222;
+}
+
+.whatsapp-header-edit-text {
+  color: blue;
+}
+
+.whatsapp-header-title {
+  font-weight: bold;
+}
+
+.whatsapp-header-edit-icon {
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid blue;
+}
+
+.whatsapp-body {
+  flex: 1;
+  padding: 10px;
+
+  overflow-y: scroll;
+
+  border: 1px solid #222;
+}
+
+.whatsapp-footer {
+  height: 80px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  border: 1px solid #222;
+}
+
+.whatsapp-footer-button {
+  width: 60px;
+  height: 60px;
+  padding: 6px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid red;
+}
+
+.whatsapp-footer-button-icon {
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid green;
+}
+
+.whatsapp-footer-button-label {
+  font-size: 10px;
+}
+
+.whatsapp-chat-row {
+  padding: 10px 0;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.whatsapp-chat-row-divider {
+  border-top: 1px solid #ccc;
+}
+
+.whatsapp-chat-row-icon {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 30px;
+  border: 1px solid green;
+}
+
+.whatsapp-chat-row-summary {
+  margin: 0 6px;
+
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.whatsapp-chat-row-summary-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.whatsapp-chat-row-summary-last-message-user {
+  font-size: 14px;
+}
+
+.whatsapp-chat-row-summary-last-message {
+  font-size: 14px;
+
+  color: gray;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.whatsapp-chat-row-time-cell {
+  width: 80px;
+  margin: 0 6px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  font-size: 10px;
+  color: gray;
+}
+
+.whatsapp-chat-row-next-arrow {
+  width: 10px;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 16px;
+  color: gray;
+}

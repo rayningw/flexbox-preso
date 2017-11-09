@@ -3,6 +3,7 @@ import KeyHandler, { KEYPRESS } from "react-key-handler";
 
 import ScreensBuilder, { VesselDemoFlow } from "../screens-builder";
 import Screen from "../screen";
+import WhatsApp from "../whatsapp";
 
 import "./app.css";
 
@@ -15,7 +16,7 @@ export default class App extends Component {
       /** Linear sequence of screens */
       screens: this.buildInitialScreens(),
       /** Index of the current screen */
-      currentScreen: 30,
+      currentScreen: 38,
     };
   }
 
@@ -198,6 +199,12 @@ export default class App extends Component {
       .appendExplanation("`flex: <flex-grow>`")
       .cloneScreen()
       .appendExplanation("`flex: <flex-grow> <flex-shrink> <flex-basis>`");
+    
+    builder
+      .newScreen("WhatsApp")
+      .appendExplanation("## Building WhatsApp interface")
+      .appendExplanation("![whatsapp](http://is1.mzstatic.com/image/thumb/Purple69/v4/3e/d7/c0/3ed7c014-0654-8aab-0d55-90b973d3c17a/source/392x696bb.jpg)")
+      .withDemoPane(<WhatsApp />);
 
     return builder.build();
   }
